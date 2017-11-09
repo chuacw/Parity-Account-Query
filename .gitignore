@@ -1,0 +1,25 @@
+# Ignore these files
+
+*.cmd
+*.txt
+
+# Ignore the build directory
+bin/
+build/
+docs/
+node_modules/
+__history/
+
+# Allow truffle configuration to be saved
+truffle-config.js
+#truffle.js
+
+# Do not save any node files
+.node*
+
+package.json
+package-lock.json
+*.json
+*.old
+*.working
+*.jslatest

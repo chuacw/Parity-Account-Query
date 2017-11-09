@@ -1,0 +1,30 @@
+<html>
+<head>
+<title>Chee Wee's Affected Parity Wallets Calculator</title>
+<script type="text/javascript" src="http://rawgit.com/ethereum/web3.js/0.16.0/dist/web3.min.js"></script>
+<script type="text/javascript">
+
+    function showAccount() {
+      // also web3.eth.accounts[0]
+      // let coinbase = web3.eth.coinbase;
+
+      document.getElementById('affectedAmount').innerText = 'Wait about 5-6 minutes';
+
+		var myWorker = new Worker('getAffectedParityBalances.js');
+
+		myWorker.onmessage = function(oEvent) {
+		  document.getElementById('affectedAmount').innerHTML = oEvent.data;
+		};
+
+		myWorker.postMessage(''); // worker needs a message to start...
+    }
+
+</script>
+</head>
+<body>
+<button type="button" onClick="showAccount();">Show affected amount</button>
+    <h1>Affected Parity amount Blah</h1>
+    <div></div>
+    <div id="affectedAmount"></div>
+</body>
+</html>
