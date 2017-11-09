@@ -2,8 +2,9 @@
 
 contract('getParityBalances', function(accounts) {
 
-
   it('can get balance', async() => {
+    this.setTimeout(()=>{}, 0); // disables the timeout so that long-running transactions don't fail!
+    
     let accounts = [
    "0xc16ba0bf101682e0e7fcbd0b7bc160a8e2e59471",
    "0xadf189ba5aa503c8b3faf104e5175ee8d65b6a86",
@@ -603,8 +604,7 @@ contract('getParityBalances', function(accounts) {
       console.log("Total balance: " + totalBalance);
     }
     
-    assert.equal(1, 1); // without an assert, Truffle assumes the test failed.
-    
+   
   })
 
 
