@@ -1,7 +1,11 @@
 // gets the affected Parity wallets and ETH amount involved
 
-contract('getParityBalances', function(accounts) {
+// So, this works against an online node, but requires a local testrpc even though it doesn't use it...
 
+contract('getParityBalances', function(accounts) {
+  const newProvider = new web3.providers.HttpProvider("https://mainnet.infura.io/");
+  web3.setProvider(newProvider);
+  
   it('can get balance', async() => {
     this.setTimeout(()=>{}, 0); // disables the timeout so that long-running transactions don't fail!
     
@@ -598,7 +602,7 @@ contract('getParityBalances', function(accounts) {
     i++) {
       let addr = accounts[i];
       console.log("\nAddr: " + addr);
-      let balance = Number(await web3.fromWei(web3.eth.getBalance(addr).toNumber()));
+      let balance = Number(await web3.fromWei(web3.eth.getBalance(addr)));
       console.log("Addr balance: " + balance);
       totalBalance = totalBalance + balance;
       console.log("Total balance: " + totalBalance);
